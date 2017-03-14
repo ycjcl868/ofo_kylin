@@ -7,7 +7,7 @@ import 'mint-ui/lib/style.css'
 import Mint from 'mint-ui'
 
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = true;
 Vue.use(Mint);
 
 

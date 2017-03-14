@@ -3,11 +3,14 @@
 
       <mt-header fixed title="查询系统"></mt-header>
 
-
+      
+      <img class="banner" src="./assets/banner.jpg" alt="">
       <mt-navbar v-model="selected">
           <mt-tab-item id="1">查询</mt-tab-item>
           <mt-tab-item id="2">添加</mt-tab-item>
       </mt-navbar>
+      
+      
 
 
       <kylin-search v-if="selected == 1"></kylin-search>
@@ -66,6 +69,9 @@ export default {
 </script>
 
 <style>
+    .banner{
+        max-width: 100%;
+    }
   body{
     margin: 0;
   }

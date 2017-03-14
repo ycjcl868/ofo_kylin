@@ -11,12 +11,23 @@ var db = new sqlite3.Database('data.db');
 
 module.exports = {
     add:function (number, password,fun) {
-        db.run("INSERT INTO ofo VALUES (?,?)",number,password,function (err) {
-            if(err){
-                throw err;
+        let that = this;
+        db.each("SELECT number,password,COUNT(*) as length FROM ofo WHERE number = ?",number,function (err, row) {
+            if(row.length > 0 && row.password == password){
+                fun({status:-2,info:'已经添加过此车号'});
+                return;
+            }else if(row.length>0 && row.password != password){
+                that.change(number,password,function () {
+                    fun({status:2,info:number+'密码修改成功'});
+                })
+            }else{
+                db.run("INSERT INTO ofo VALUES (?,?)",number,password,function (err) {
+                    if(err){
+                        throw err;
+                    }
+                    fun({status:1,info:'添加成功'});
+                });
             }
-            fun('添加成功');
-
         });
     },
     delete:function (number, fun) {
@@ -41,7 +52,7 @@ module.exports = {
             if(err){
                 throw err;
             }
-            fun('修改成功');
+            fun({status:1,info:'修改成功'});
         })
     }
 };
