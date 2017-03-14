@@ -16,7 +16,7 @@ module.exports = {
                 throw err;
             }
             fun('添加成功');
-            
+
         });
     },
     delete:function (number, fun) {
@@ -25,15 +25,16 @@ module.exports = {
               throw err;
           }
           fun('删除成功');
-      })  
+      })
     },
     select:function (number, fun) {
-        db.each("SELECT * FROM ofo WHERE number = ?",number,function (err, row) {
-            if(err){
-                throw err;
-            }
-            fun(row);
-        })
+      db.each("SELECT number,password,COUNT(*) as status FROM ofo WHERE number = ?",number,function (err, row) {
+          if(err){
+              throw err;
+          }
+          fun({info:row});
+      })
+
     },
     change:function (number, password,fun) {
         db.run('UPDATE ofo SET password=? WHERE number=?',password,number,function (err) {

@@ -1,35 +1,35 @@
 <template>
   <div id="app">
-      
+
       <mt-header fixed title="查询系统"></mt-header>
 
-      
+
       <mt-navbar v-model="selected">
           <mt-tab-item id="1">查询</mt-tab-item>
           <mt-tab-item id="2">添加</mt-tab-item>
       </mt-navbar>
-      <img src="./assets/logo.png" alt="">
 
 
       <kylin-search v-if="selected == 1"></kylin-search>
       <kylin-add v-if="selected == 2"></kylin-add>
-      
-      <button @click="getData">Hello</button>
-      <p>{{ userData }}</p>
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
+
       <mt-tabbar v-model="selected">
           <mt-tab-item id="1">
-              
+            <img v-if="selected != 1" src="./assets/search.png" slot="icon">
+            <img v-if="selected == 1" src="./assets/search-active.png" slot="icon">
               查询
           </mt-tab-item>
           <mt-tab-item id="2">
+            <img v-if="selected != 2" src="./assets/add.png" slot="icon">
+            <img v-if="selected == 2" src="./assets/add-active.png" slot="icon">
              添加
-              
+
           </mt-tab-item>
       </mt-tabbar>
   </div>
@@ -39,9 +39,9 @@
     import Mint from 'mint-ui'
     import Search from './components/Hello'
     import Add from './components/Add'
-    import axios from 'axios'
+
 export default {
-    
+
     name: 'app',
     components:{
         'kylin-search':Search,
@@ -54,8 +54,8 @@ export default {
         }
     },
     methods:{
-        
-        getData:()=>{
+
+        getData(){
             axios.get('/api').then((response) => {
                 alert(1);
                 console.log(response);
@@ -66,6 +66,9 @@ export default {
 </script>
 
 <style>
+  body{
+    margin: 0;
+  }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
