@@ -31,16 +31,9 @@ router.post('/search',(req,res)=>{
 router.post('/add',(req,res)=>{
    const number = req.body.number;
    const password = req.body.password;
-   console.log(req.body.adminPass);
-   const adminPass = md5(req.body.adminPass+'kylinKing');
-   console.log(adminPass);
    
-   if(number == '' || password == '' || adminPass == ''){
+   if(number == '' || password == ''){
        res.json({info:{status:-1}});
-       return;
-   }
-   if(adminPass !== '26ea29d6b5b89a2a7e0b68fb8abfaaf6'){
-       res.json({info:{status:0}});
        return;
    }
    sqlTool.add(number,password,function (data) {
