@@ -31,7 +31,7 @@
       methods:{
         doAdd(){
             let that = this;
-            if(that.number == '' || that.password == '' || that.adminPass == '' ){
+            if(that.number == '' || that.password == ''){
                 MessageBox('提示','添加的信息不能为空');
                 return;
             }
