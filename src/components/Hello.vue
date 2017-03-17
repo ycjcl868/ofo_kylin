@@ -1,7 +1,7 @@
 <template>
   <div class="search-wrapper">
-    <mt-field label="车牌号" placeholder="请输入车牌号" v-model="number" type="number"></mt-field>
-    <mt-button @click.native="doSearch" class="search-button" type="primary">点击查询</mt-button>
+    <mt-field label="1111" placeholder="1111" v-model="number" type="number"></mt-field>
+    <mt-button @click.native="doSearch" class="search-button" type="primary">2222</mt-button>
   </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
       doSearch(){
           let that = this;
           if(that.number == ''){
-              MessageBox('提示','请输入车牌号');
+              MessageBox('提示','请输入1111号');
               return;
           }
           axios.post('/api/search',{
@@ -27,9 +27,9 @@ export default {
           }).then((response) => {
               console.log(response);
               if(response.data.info.status == 1){
-                MessageBox('查询结果', '密码是'+Number(response.data.info.password));
+                MessageBox('提示', '2222是'+Number(response.data.info.password));
               }else{
-                  MessageBox('查询结果','没有查到相应的密码');
+                  MessageBox('提示','没有查到相应的2222');
               }
           })
       }

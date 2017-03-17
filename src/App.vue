@@ -1,13 +1,13 @@
 <template>
   <div id="app">
 
-      <mt-header fixed title="查询系统"></mt-header>
+      <mt-header fixed title="1111系统"></mt-header>
 
       
       <img class="banner" src="./assets/banner.jpg" alt="">
       <mt-navbar v-model="selected">
-          <mt-tab-item id="1">查询</mt-tab-item>
-          <mt-tab-item id="2">添加</mt-tab-item>
+          <mt-tab-item id="1">1111</mt-tab-item>
+          <mt-tab-item id="2">2222</mt-tab-item>
       </mt-navbar>
       
       
@@ -26,12 +26,12 @@
           <mt-tab-item id="1">
             <img v-if="selected != 1" src="./assets/search.png" slot="icon">
             <img v-if="selected == 1" src="./assets/search-active.png" slot="icon">
-              查询
+              1111
           </mt-tab-item>
           <mt-tab-item id="2">
             <img v-if="selected != 2" src="./assets/add.png" slot="icon">
             <img v-if="selected == 2" src="./assets/add-active.png" slot="icon">
-             添加
+             2222
 
           </mt-tab-item>
       </mt-tabbar>

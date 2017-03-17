@@ -1,8 +1,8 @@
 <template>
     <div class="add-wrapper">
-      <mt-field label="车牌号" placeholder="请输入车牌号" v-model="number" type="number"></mt-field>
-      <mt-field label="密码" placeholder="请输入密码" v-model="password" type="number"></mt-field>
-        <mt-button @click.native="doAdd" class="add-button" type="primary">点击添加</mt-button>
+      <mt-field label="1111" placeholder="请输入1111" v-model="number" type="number"></mt-field>
+      <mt-field label="2222" placeholder="请输入2222" v-model="password" type="number"></mt-field>
+        <mt-button @click.native="doAdd" class="add-button" type="primary">点击3333</mt-button>
     </div>
 </template>
 <style>
@@ -32,7 +32,7 @@
         doAdd(){
             let that = this;
             if(that.number == '' || that.password == ''){
-                MessageBox('提示','添加的信息不能为空');
+                MessageBox('提示','添加的1111不能为空');
                 return;
             }
             axios.post('/api/add',{
@@ -42,11 +42,11 @@
                 console.log(response);
                 const status = response.data.info.status;
                 if(status == 1){
-                    MessageBox('提示', '添加成功');
+                    MessageBox('提示', '1111成功');
                 }else if(status == 2){
-                    MessageBox('提示',that.number+'号的密码修改成功');
+                    MessageBox('提示',that.number+'号的2222修改成功');
                 }else if(status == -2){
-                    MessageBox('提示','已经添加过此车号');
+                    MessageBox('提示','已经添加过此1111');
                 }else{
                     MessageBox('提示','异常错误');
                 }
